@@ -23,6 +23,13 @@ angular.module('gitur-app', ['ngRoute'])
                 redirectTo: '/'
             })
     })
-    .controller('HomeCtrl', function($scope) {
-        $scope.data = { results: mockData };
+    .controller('HomeCtrl', function ($scope) {
+        $scope.data = {
+            searchText: '',
+            results: mockData
+        };
+
+        $scope.search = _.debounce(function () {
+            console.log($scope.data.searchText);
+        }, 500);
     });
