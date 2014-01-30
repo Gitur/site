@@ -1,7 +1,12 @@
+- var pitch = 'a community that makes useful projects visible and seeds out the boring fluff.';
 doctype html
-html
+html(ng-app)
   head
-    title= title
+    title= 'Gitur.com - ' + pitch
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/angular.min.js')
+    script(src='/javascripts/application.js')
   body
+    h3.header Gitur.com
+    p.mission= pitch
     block content

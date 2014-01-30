@@ -5,7 +5,6 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
@@ -23,7 +22,13 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.use(app.router);
+
+//make public folder visible to front end
 app.use(express.static(path.join(__dirname, 'public')));
+
+//make some node_modules visible to front end
+app.use(express.static(path.join(__dirname, 'node_modules', 'underscore')));
+app.use(express.static(path.join(__dirname, 'node_modules', 'requirejs')));
 
 // development only
 if ('development' == app.get('env')) {
@@ -31,7 +36,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

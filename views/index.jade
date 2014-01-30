@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  input.search(id='search', name='search', type='text')
+  a.signin(id='signin', href='#') Sign in with Github
+  div.content
+      div.resultheader
+        span.col-name Name
+        span.col-score Score
+        span.col-github Github URL
+      div.result(ng-repeat='for r in results')
+        span.row-name {{ r.name }}
+        span.row-score {{ r.score }}
+        span.row-github {{ r.github }}
