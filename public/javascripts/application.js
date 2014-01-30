@@ -1,4 +1,4 @@
-var createRow = function(name, score, github){
+var createRow = function (name, score, github) {
     return {
         name: name,
         score: score,
@@ -12,3 +12,17 @@ var mockData = [
     createRow('Project Fun', '33', 'http://github.com/turowicz/sad')
 ];
 
+angular.module('gitur-app', ['ngRoute'])
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                controller: 'HomeCtrl',
+                templateUrl: 'templates/list.html'
+            })
+            .otherwise({
+                redirectTo: '/'
+            })
+    })
+    .controller('HomeCtrl', function($scope) {
+        $scope.data = { results: mockData };
+    });

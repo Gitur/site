@@ -1,0 +1,10 @@
+<div class="result-header">
+    <span class="col-name">Name</span>
+    <span class="col-score"> Score</span>
+    <span class="col-github"> Github URL</span>
+</div>
+<div class="result" ng-repeat="r in data.results">
+    <span class="row-name"> {{ r.name }}</span>
+    <span class="row-score"> {{ r.score }}</span>
+    <span class="row-github"> {{ r.github }}</span>
+</div>
