@@ -22,6 +22,17 @@ angular.module('gitur-app', ['ngRoute'])
         };
 
         $scope.search = _.debounce(function () {
-            console.log($scope.data.searchText);
-        }, 500);
+            var data = $scope.data;
+            var searchText = $scope.data.searchText;
+
+            if (searchText.length === 0) {
+                data.results = mockData;
+            }
+            else {
+                console.log(searchText);
+                data.results = _(mockData).filter(function (x) {
+                    return ~x.name.toLowerCase().indexOf(searchText.toLowerCase());
+                });
+            }
+        }, 200, true);
     });
