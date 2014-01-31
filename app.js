@@ -28,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //make some node_modules visible to front end
 app.use(express.static(path.join(__dirname, 'node_modules', 'underscore')));
-app.use(express.static(path.join(__dirname, 'node_modules', 'requirejs')));
 
 // development only
 if ('development' == app.get('env')) {
